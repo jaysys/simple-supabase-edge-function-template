@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Call Supabase Function</title>
+  </head>
+  <body>
+    <h1>Call Supabase Function</h1>
+    <form id="functionForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+      <button type="submit">Call supabase edge function</button>
+    </form>
+    <pre id="response"></pre>
+
+    <script>
+      document
+        .getElementById("functionForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const name = document.getElementById("name").value;
+
+          fetch("/call_function", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name: name }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              document.getElementById("response").textContent = JSON.stringify(
+                data,
+                null,
+                2
+              );
+            })
+            .catch((error) => {
+              document.getElementById("response").textContent =
+                "Error: " + error;
+            });
+        });
+    </script>
+  </body>
+</html>
