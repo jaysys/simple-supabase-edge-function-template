@@ -1,0 +1,1 @@
+# simple-supabase-edge-function-template
