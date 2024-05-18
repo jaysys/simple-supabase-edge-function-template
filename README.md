@@ -26,7 +26,7 @@ index.ts
 Deno.serve(async (req) => {
   const { name } = await req.json()
   const data = {
-    message: `Hello ${name}!`,
+    message: `Yo ${name}!`,
   }
 
   return new Response(JSON.stringify(data), { headers: { 'Content-Type': 'application/json' } })
@@ -44,7 +44,7 @@ docker가 설치되어 있어야 함
 invoking edge functions locally
 
 <pre>
-curl --request POST 'http://localhost:54321/functions/v1/hello-world' \
+curl --request POST 'http://localhost:54321/functions/v1/jworld' \
   --header 'Authorization: Bearer SUPABASE_ANON_KEY' \
   --header 'Content-Type: application/json' \
   --data '{ "name":"Functions" }'
@@ -52,7 +52,7 @@ curl --request POST 'http://localhost:54321/functions/v1/hello-world' \
 
 skipping authorization checks
 
-~# supabase functions serve hello-world --no-verify-jwt
+~# supabase functions serve jworld --no-verify-jwt
 
 ### How-to, deploy
 
@@ -69,17 +69,17 @@ deploy
 
 ~# supabase functions deploy
 
-~# supabase functions deploy hello-world
+~# supabase functions deploy jworld
 
-~# supabase functions deploy hello-world --no-verify-jwt
+~# supabase functions deploy jworld --no-verify-jwt
 
 Invoking remote functions
 
 <pre>
-curl --request POST 'https://<project_id>.supabase.co/functions/v1/hello-world' \
+curl --request POST 'https://<project_id>.supabase.co/functions/v1/jworld' \
   --header 'Authorization: Bearer ANON_KEY' \
   --header 'Content-Type: application/json' \
   --data '{ "name":"Functions" }'
 </pre>
 
-You should receive the response { "message":"Hello Functions!" }
+You should receive the response { "message":"Yo! ~ooo~!" }
