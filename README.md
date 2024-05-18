@@ -57,6 +57,7 @@ skipping authorization checks
 ### How-to, deploy
 
 https://supabase.com/docs/guides/functions/deploy
+
 ~# supabase login
 
 ~# supabase projects list
